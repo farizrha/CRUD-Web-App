@@ -115,7 +115,7 @@ const Edit = () => {
             name="status" 
             type="checkbox" 
             label="Active"
-            defaultValue={formik.values.status}
+            defaultChecked={formik.values.status ? true : false}
             onChange={formik.handleChange}
           />
           <button type="submit" className="btn btn-primary" onClick={notification}>
