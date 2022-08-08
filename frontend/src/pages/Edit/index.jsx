@@ -54,7 +54,7 @@ const Edit = () => {
       formData.append("status", values.status);
 
       try {
-        axios.post("/api/v1/product", formData, {
+        axios.put(`/api/v1/product/${id}`, formData, {
           headers: {
             "Content-type": "multipart/form-data",
           },
@@ -115,7 +115,7 @@ const Edit = () => {
             defaultValue={formik.values.status}
             onChange={formik.handleChange}
           />
-          <button type="submit" className="btn btn-primary" onClick={notification}>
+          <button type="submit" className="btn btn-primary" >
             Simpan
           </button>
         </form>

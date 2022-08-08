@@ -34,8 +34,11 @@ const view = (req,res) => {
 const update = (req,res) => {
     const {id} = req.body;
     const {name} = req.body;
+    const price = JSON.parse(req.body.price);
+    const stock = JSON.parse(req.body.stock);
+    const status = JSON.parse(req.body.status);
 
-    db.collection('products').updateOne({_id: ObjectID(id)}, {$set: {name: name}})
+    db.collection('products').updateOne({_id: ObjectID(id)}, {$set: {name: name, price: price, stock: stock, status: status}})
         .then(result => res.send([result]))
         .catch(error => res.send(error));
 };
