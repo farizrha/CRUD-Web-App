@@ -30,6 +30,7 @@ const Tambah = () => {
             "Content-type": "multipart/form-data",
           },
         });
+        alert("Produk berhasil di tambah")
         history.push("/");
       } catch (error) {
         console.log(error);

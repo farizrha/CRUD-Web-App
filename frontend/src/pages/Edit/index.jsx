@@ -40,6 +40,7 @@ const Edit = () => {
   // Use formik and yup for dealing form
   const formik = useFormik({
     initialValues: {
+      id: id,
       name: name,
       price: price,
       stock: stock,
@@ -48,6 +49,7 @@ const Edit = () => {
     enableReinitialize: true,
     onSubmit: function (values) {
       const formData = new FormData();
+      formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("price", values.price);
       formData.append("stock", values.stock);
@@ -71,10 +73,11 @@ const Edit = () => {
     }),
   });
 
-  const notification = () => {
+  const notification = (event) => {
     if (window.confirm("Apakah anda yakin untuk update data?") === true) {
       alert("Data Berhasil di Update")
     } else {
+      event.preventDefault();
     }
   }
 
@@ -115,7 +118,7 @@ const Edit = () => {
             defaultValue={formik.values.status}
             onChange={formik.handleChange}
           />
-          <button type="submit" className="btn btn-primary" >
+          <button type="submit" className="btn btn-primary" onClick={notification}>
             Simpan
           </button>
         </form>

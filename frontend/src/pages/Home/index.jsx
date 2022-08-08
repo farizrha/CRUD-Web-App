@@ -9,9 +9,14 @@ const Home = () => {
   const [query, setQuery] = useState([]);  
 
   // Function to delete data
-  const deleteItem = async (id) => {
-    await axios.delete(`/api/v1/product/${id}`)
-    fetchData();
+  const deleteItem = async (id, event) => {
+    if (window.confirm("Apakah anda yakin untuk hapus data?") === true) {
+      await axios.delete(`/api/v1/product/${id}`)
+      alert("Data Berhasil di hapus")
+      fetchData();
+    } else {
+      event.preventDefault();
+    }
   }
 
   // Function to fetch data from backend
