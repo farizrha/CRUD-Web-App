@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://eduwork:eduwork@localhost:27017?authSource=admin');
+mongoose.connect('mongodb://eduwork:eduwork@localhost:27017/eduwork-native-2?authSource=admin');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));

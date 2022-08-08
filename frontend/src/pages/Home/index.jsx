@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import "./index.scss";
 import axios from 'axios';
 import debounce from 'lodash.debounce';
@@ -8,7 +8,6 @@ const Home = () => {
   // Define state
   const [backendData, setBackendData] = useState([]);
   const [query, setQuery] = useState([]);
-
 
   // Update query to search
   const updateQuery = e => setQuery(e?.target?.value)

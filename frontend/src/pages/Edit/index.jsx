@@ -19,8 +19,6 @@ const Edit = () => {
   // Get ID from parameter URL
   const { id } = useParams([]);
 
-  let check = false
-
   // Hook useEffect
   useEffect(() => {
     const getDataById = async () => {
