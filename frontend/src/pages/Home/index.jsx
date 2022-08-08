@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./index.scss";
 import axios from 'axios';
+import debounce from 'lodash.debounce';
 
 const Home = () => {
   // Define state
@@ -9,13 +10,15 @@ const Home = () => {
   const [query, setQuery] = useState([]);  
 
   // Function to delete data
-  const deleteItem = async (id, event) => {
+  const deleteItem = async (id) => {
     if (window.confirm("Apakah anda yakin untuk hapus data?") === true) {
       await axios.delete(`/api/v1/product/${id}`)
       alert("Data Berhasil di hapus")
       fetchData();
     } else {
-      event.preventDefault();
+      return function(e) {
+        e.preventDefault()
+      };
     }
   }
 

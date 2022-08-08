@@ -11,13 +11,15 @@ const Edit = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [stock, setStock] = useState('');
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState();
 
   // For navigate page
   const history = useHistory();
 
   // Get ID from parameter URL
   const { id } = useParams([]);
+
+  let check = false
 
   // Hook useEffect
   useEffect(() => {
@@ -115,7 +117,7 @@ const Edit = () => {
             name="status" 
             type="checkbox" 
             label="Active"
-            defaultChecked={formik.values.status ? true : false}
+            defaultChecked={formik.values.status}
             onChange={formik.handleChange}
           />
           <button type="submit" className="btn btn-primary" onClick={notification}>
