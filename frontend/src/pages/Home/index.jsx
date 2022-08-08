@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./index.scss";
 import axios from 'axios';
 import debounce from 'lodash.debounce';
@@ -7,7 +7,14 @@ import debounce from 'lodash.debounce';
 const Home = () => {
   // Define state
   const [backendData, setBackendData] = useState([]);
-  const [query, setQuery] = useState([]);  
+  const [query, setQuery] = useState([]);
+
+
+  // Update query to search
+  const updateQuery = e => setQuery(e?.target?.value)
+
+  // Debounce function to wait before update query to search in this case 300 ms
+  const debouncedOnChange = debounce(updateQuery, 300)
 
   // Function to delete data
   const deleteItem = async (id) => {
@@ -40,7 +47,7 @@ const Home = () => {
         Tambah Produk
       </Link>
       <div className="search">
-        <input type="text" placeholder="Masukan kata kunci..." onChange={e=>setTimeout(() => setQuery(e.target.value), [2000])}/>
+        <input type="text" placeholder="Masukan kata kunci..." onChange={debouncedOnChange}/>
       </div>
       <table className="table">
         <thead>
