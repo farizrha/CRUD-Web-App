@@ -70,8 +70,6 @@ const destroy = (req,res) => {
         .catch(error => res.send(error));
 };
 
-
-
 module.exports = {
     index,
     view,
